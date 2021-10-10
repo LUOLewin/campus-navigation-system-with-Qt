@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/academic_center.jpg</file>
+        <file>images/administration_building.jpeg</file>
+        <file>images/arts_building.jpeg</file>
+        <file>images/dexin_student_hall.jpeg</file>
+        <file>images/experimental_primary_school.jpeg</file>
+        <file>images/high-level_sports_center.jpg</file>
+        <file>images/jindi_student_hall.jpeg</file>
+        <file>images/laboratory_workshops.jpg</file>
+        <file>images/library.jpeg</file>
+        <file>images/linjiang_student_hall.jpeg</file>
+        <file>images/menu.jpg</file>
+        <file>images/no.1_teaching_building.jpg</file>
+        <file>images/no.2_teaching_building.jpeg</file>
+        <file>images/no.3_teaching_building.jpeg</file>
+        <file>images/no.4_teaching_building.jpeg</file>
+        <file>images/no.5_teaching_building.jpeg</file>
+        <file>images/no.6_teaching_building.jpeg</file>
+        <file>images/red_brick_building.jpg</file>
+        <file>images/second_administration_building.jpg</file>
+        <file>images/stadium.jpeg</file>
+        <file>images/training_building.jpeg</file>
+        <file>images/university_history_museum.jpeg</file>
+        <file>images/university_map.jpg</file>
+        <file>images/xihua_faculty_hall.jpg</file>
+        <file>images/XHU.jpg</file>
+    </qresource>
+</RCC>
