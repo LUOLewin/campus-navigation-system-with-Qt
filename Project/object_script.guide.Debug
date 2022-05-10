@@ -1,0 +1,10 @@
+debug/place.o
+debug/graphwidget.o
+debug/main.o
+debug/mainwindow.o
+debug/mapplace.o
+debug/qrc_images.o
+debug/moc_place.o
+debug/moc_graphwidget.o
+debug/moc_mainwindow.o
+debug/moc_mapplace.o

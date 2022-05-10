@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "x:/2.Professional-Resources/ThingsIDo/At_work/Custom-C++/Qt/campus-navigation-system-with-Qt-main/campus-navigation-system-with-Qt-main/Project",
+      "environment": [],
+      "program": "x:/2.Professional-Resources/ThingsIDo/At_work/Custom-C++/Qt/campus-navigation-system-with-Qt-main/campus-navigation-system-with-Qt-main/Project/build/Debug/outDebug",
+      "internalConsoleOptions": "openOnSessionStart",
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:/MinGW64/bin/gdb.exe",
+      "externalConsole": false,
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

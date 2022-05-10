@@ -1,9 +1,9 @@
 /*****************************************
 File name:      mystruct.h
-Author:         luolewin
-Version:        v1.0
-Description:    定义自己的数据结构
-Date:           2020.12.17
+Author:         CHL
+Version:        v1.1
+Description:    定义图的数据结构
+Date:           2022.3.17
 *****************************************/
 
 #ifndef MYSTRUCT_H

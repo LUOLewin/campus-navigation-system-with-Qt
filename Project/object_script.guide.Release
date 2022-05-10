@@ -1,0 +1,10 @@
+release/place.o
+release/graphwidget.o
+release/main.o
+release/mainwindow.o
+release/mapplace.o
+release/qrc_images.o
+release/moc_place.o
+release/moc_graphwidget.o
+release/moc_mainwindow.o
+release/moc_mapplace.o

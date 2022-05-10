@@ -1,11 +1,11 @@
 /*****************************************
 File name:      mainwindow.h
-Author:         luolewin
-Version:        v1.0
+Author:         CHL
+Version:        v1.1
 Description:    校园导航主窗口cpp的头文件，函数声明
-Date:           2020.12.17
+Date:           2022.3.17
 *****************************************/
-
+//#include <QLabel>
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -32,15 +32,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
-
+    //QLabel nanqu;
 protected:
-    void paintEvent(QPaintEvent *event);        // 图片绘制方法
     void mousePressEvent(QMouseEvent *event);   // 鼠标左击事件
     void closeEvent(QCloseEvent *event);        // 主窗口退出事件
-
+    void mouseMoveEvent(QMouseEvent *e);
 private slots:
     void on_pushButton_clicked();
     void on_pushButton2_clicked();
-    void on_pushButton3_clicked();
+
 };
 #endif // MAINWINDOW_H
