@@ -10,7 +10,7 @@ class place : public QLabel
 public:
     place(QWidget *parent = nullptr);
     virtual ~place();
-    size_t get_place_id();
+    const size_t get_place_id();
     void set_place_id(const size_t id);
 protected:
     void enterEvent(QEnterEvent *e);
