@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "mystruct.h"
 #include <QApplication>
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -9,9 +10,7 @@ int main(int argc, char *argv[])
     qRegisterMetaType<arcell>("arcell");
     qRegisterMetaType<vexsinfo>("vexsinfo");
     qRegisterMetaType<mgraph>("mgraph");
-
     MainWindow w;
     w.show();
-
     return a.exec();
 }

@@ -70,7 +70,7 @@
       <widget class="QTextBrowser" name="textBrowser"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="available_path_button">
        <property name="text">
         <string>可选路径</string>
        </property>
@@ -80,7 +80,7 @@
       <widget class="QTextBrowser" name="textBrowser2"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton2">
+      <widget class="QPushButton" name="shortest_path_button">
        <property name="text">
         <string>最短路径</string>
        </property>
@@ -154,15 +154,15 @@
      <bool>true</bool>
     </property>
     <property name="text">
-     <string>南区</string>
+     <string>南区1</string>
     </property>
    </widget>
    <widget class="place" name="Xin_Shi_Ji">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>10</x>
       <y>290</y>
-      <width>101</width>
+      <width>111</width>
       <height>121</height>
      </rect>
     </property>
@@ -175,7 +175,7 @@
      <bool>true</bool>
     </property>
     <property name="text">
-     <string>新世纪</string>
+     <string>新世纪2</string>
     </property>
    </widget>
    <widget class="place" name="Nan_Chen_Lu">
@@ -392,9 +392,9 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>400</y>
+      <y>390</y>
       <width>81</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -406,7 +406,7 @@
      <bool>true</bool>
     </property>
     <property name="text">
-     <string>后勤基建大楼</string>
+     <string>后勤基建3</string>
     </property>
    </widget>
   </widget>

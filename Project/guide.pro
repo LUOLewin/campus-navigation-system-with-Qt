@@ -18,17 +18,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    front/sources/mainwindow.cpp \
     front/sources/place.cpp \
-    graphwidget.cpp \
     main.cpp \
-    mainwindow.cpp \
+    rear/sources/graph.cpp
 
 HEADERS += \
-    config.h \
+    front/headers/config.h \
+    front/headers/mainwindow.h \
     front/headers/place.h \
-    graphwidget.h \
-    mainwindow.h \
-    mystruct.h \
+    rear/headers/graph.h \
+    rear/headers/mystruct.h
 
 FORMS += \
     mainwindow.ui
