@@ -21,14 +21,13 @@ SOURCES += \
     front/sources/mainwindow.cpp \
     front/sources/place.cpp \
     main.cpp \
-    rear/sources/graph.cpp
+    rear/sources/graphstruct.cpp
 
 HEADERS += \
     front/headers/config.h \
     front/headers/mainwindow.h \
     front/headers/place.h \
-    rear/headers/graph.h \
-    rear/headers/mystruct.h
+    rear/headers/graphstruct.h
 
 FORMS += \
     mainwindow.ui
