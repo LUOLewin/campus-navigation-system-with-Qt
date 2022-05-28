@@ -2,5 +2,6 @@
     <qresource prefix="/images">
         <file>image/university_map.JPG</file>
         <file>image/icon.png</file>
+        <file>image/SchoolMap.png</file>
     </qresource>
 </RCC>

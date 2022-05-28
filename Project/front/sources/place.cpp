@@ -7,32 +7,59 @@ Date:           2022.3.17
 *****************************************/
 #include "place.h"
 #include "mainwindow.h"
+#include "ui_mainwindow.h"
 #include <QDebug>
 #include <QCursor>
 #include <QTimer>
 #include <QDebug>
+#include <QPainter>
+#include <QPen>
+#include <QLine>
+
+int place::clicks = 0;
+int place::red = 0;
+
 place::place(QWidget *parent): QLabel(parent)
 {
+
     this->setMouseTracking(true);
     this->show();
+
 }
 place::~place()
 {
 
 }
-void place::set_place_id(const size_t id)
+void place::mousePressEvent(QMouseEvent *e)
 {
-    this->place_id=id;
-}
-const size_t place::get_place_id()
-{
-    return this->place_id;
-}
-void place::enterEvent(QEnterEvent *e)
-{
-    this->setStyleSheet("color: rgba(0, 0, 0,1);background-color: rgba(255, 255, 255,1);");//设为不透明
-}
-void place::leaveEvent(QEvent *e)
-{
-    this->setStyleSheet("color: rgba(0, 0, 0,0);background-color: rgba(255, 255, 255,0);");//设为透明
+    if(clicks==0)
+    {
+        clicks++;
+        ui_p->lineEdit->setText(this->text());
+        ui_p->label_2->setText("已经第："+QString::number(1)+"个点，正在第"+QString::number(2)+"个点！");
+        if (red<3)
+        {
+            this->setStyleSheet("background-color: rgb(255, 0,0);");
+            red++;
+        }
+        else
+        {
+
+        }
+    }
+    else if(clicks == 1){
+        clicks = 0;
+        ui_p->lineEdit2->setText(this->text());
+        ui_p->label_2->setText("已经第："+QString::number(2)+"个点，正在第"+QString::number(1)+"个点！");
+        if (red<3)
+        {
+            this->setStyleSheet("background-color: rgb(255, 0,0);");
+            red++;
+        }
+        else if(red == 3)
+        {
+
+        }
+    }
+    else {this->setStyleSheet("background-color: rgb(255, 255,255);");}
 }

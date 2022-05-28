@@ -3,6 +3,7 @@
 #include <QLabel>
 #include <QMouseEvent>
 #include <QTimer>
+#include <QLine>
 class place : public QLabel
 {
     Q_OBJECT
@@ -10,15 +11,15 @@ class place : public QLabel
 public:
     place(QWidget *parent = nullptr);
     virtual ~place();
-    const size_t get_place_id();
-    void set_place_id(const size_t id);
+
+    static int clicks;
+    static int red;
 protected:
-    void enterEvent(QEnterEvent *e);
-    void leaveEvent(QEvent *e);
+    void mousePressEvent(QMouseEvent *e);
 private slots:
 
 private:
-    size_t place_id;//地点的序号
 
+    static void set_stylesheet();
 };
 #endif // PLACE_H
