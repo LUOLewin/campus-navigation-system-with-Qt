@@ -14,3 +14,5 @@ In the main window, enter the start point and end point indexes, and click the o
 ### 3  Function of shortest path / 最短路径功能
 In the main window, enter the starting point and ending point indexes, and click the shortest path button to generate the shortest path.
 在主窗口界面，输入起点和终点序号，点击最短路径按钮，可生成最短路径。
+### 4  Direct place access /控件直接可以点击选择
+可以直接点击控件进行选择然后输入，并且具有画线功能。
