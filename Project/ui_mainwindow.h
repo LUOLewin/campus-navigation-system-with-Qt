@@ -36,9 +36,11 @@ public:
     QLineEdit *lineEdit2;
     QLabel *label2;
     QTextBrowser *textBrowser;
-    QPushButton *available_path_button;
+    QPushButton *walking_button;
     QTextBrowser *textBrowser2;
-    QPushButton *shortest_path_button;
+    QPushButton *riding_button;
+    QPushButton *show_walking_button;
+    QPushButton *show_riding_button;
     QHBoxLayout *horizontalLayout;
     QLabel *MousePosLabel;
     QLabel *map;
@@ -94,6 +96,7 @@ public:
     place *Node_49;
     place *Node_50;
     QLabel *label_2;
+    QTextBrowser *textBrowser_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -101,7 +104,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1282, 852);
+        MainWindow->resize(1481, 931);
         MainWindow->setMinimumSize(QSize(1200, 600));
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         MainWindow->setMouseTracking(true);
@@ -140,20 +143,30 @@ public:
 
         verticalLayout->addWidget(textBrowser);
 
-        available_path_button = new QPushButton(layoutWidget);
-        available_path_button->setObjectName(QString::fromUtf8("available_path_button"));
+        walking_button = new QPushButton(layoutWidget);
+        walking_button->setObjectName(QString::fromUtf8("walking_button"));
 
-        verticalLayout->addWidget(available_path_button);
+        verticalLayout->addWidget(walking_button);
 
         textBrowser2 = new QTextBrowser(layoutWidget);
         textBrowser2->setObjectName(QString::fromUtf8("textBrowser2"));
 
         verticalLayout->addWidget(textBrowser2);
 
-        shortest_path_button = new QPushButton(layoutWidget);
-        shortest_path_button->setObjectName(QString::fromUtf8("shortest_path_button"));
+        riding_button = new QPushButton(layoutWidget);
+        riding_button->setObjectName(QString::fromUtf8("riding_button"));
 
-        verticalLayout->addWidget(shortest_path_button);
+        verticalLayout->addWidget(riding_button);
+
+        show_walking_button = new QPushButton(layoutWidget);
+        show_walking_button->setObjectName(QString::fromUtf8("show_walking_button"));
+
+        verticalLayout->addWidget(show_walking_button);
+
+        show_riding_button = new QPushButton(layoutWidget);
+        show_riding_button->setObjectName(QString::fromUtf8("show_riding_button"));
+
+        verticalLayout->addWidget(show_riding_button);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -532,10 +545,13 @@ public:
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(350, 700, 471, 21));
+        textBrowser_2 = new QTextBrowser(centralwidget);
+        textBrowser_2->setObjectName(QString::fromUtf8("textBrowser_2"));
+        textBrowser_2->setGeometry(QRect(1290, 0, 181, 591));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1282, 25));
+        menubar->setGeometry(QRect(0, 0, 1481, 25));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -551,8 +567,10 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Guide", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "\350\265\267\347\202\271", nullptr));
         label2->setText(QCoreApplication::translate("MainWindow", "\347\273\210\347\202\271", nullptr));
-        available_path_button->setText(QCoreApplication::translate("MainWindow", "\346\255\245\350\241\214\346\250\241\345\274\217", nullptr));
-        shortest_path_button->setText(QCoreApplication::translate("MainWindow", "\351\252\221\350\241\214\346\250\241\345\274\217", nullptr));
+        walking_button->setText(QCoreApplication::translate("MainWindow", "\346\255\245\350\241\214\346\250\241\345\274\217", nullptr));
+        riding_button->setText(QCoreApplication::translate("MainWindow", "\351\252\221\350\241\214\346\250\241\345\274\217", nullptr));
+        show_walking_button->setText(QCoreApplication::translate("MainWindow", "\346\230\276\347\244\272\346\255\245\350\241\214\350\267\257\345\276\204", nullptr));
+        show_riding_button->setText(QCoreApplication::translate("MainWindow", "\346\230\276\347\244\272\351\252\221\350\241\214\350\267\257\345\276\204", nullptr));
         MousePosLabel->setText(QCoreApplication::translate("MainWindow", "(0,0)", nullptr));
         map->setText(QString());
         Node_0->setText(QCoreApplication::translate("MainWindow", "0", nullptr));

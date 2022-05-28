@@ -1,31 +1,29 @@
 #ifndef GRAPHSTRUCT_H
 #define GRAPHSTRUCT_H
-#include <iostream>
 #include <string.h>
 #include <stdlib.h>
 #include "ui_mainwindow.h"
-//边表结点
+
 typedef struct EdgeNode {
-    //顶点对应的下标
+
     int adjvex;
-    //权值
+
     int weight;
-    //指向下一个邻接点
+
     struct EdgeNode* next;
 } edgeNode;
 
-//顶点表结点
+
 typedef struct _VertexNode {
-    //顶点数据
+
     char data[51];
-    //边表头指针
+
     edgeNode* firstedge;
 } VertexNode, AdjList[100];
 
-//集合
+
 typedef struct _GraphAdjList{
     AdjList adjList;
-    //顶点数和边数
     int numVertexes, numEdges;
 } GraphAdjList;
 
@@ -36,15 +34,15 @@ public:
     void ShowALGraph(GraphAdjList* G);
 
     //初始化地图(步行或地图)
-    void InitMap(GraphAdjList* G);
-    void InitMap1(GraphAdjList* G);
+    void init_walking_map(GraphAdjList* G);
+    void init_riding_map(GraphAdjList* G);
     //创建地图
     void CreateALGraph(GraphAdjList* G);
     void CreateALGraph2(GraphAdjList* G);
 
     //计算各个顶点之间最短路径
-    void ShortestPath_Floyd(GraphAdjList* G, int P[51][51], int D[51][51]);
-    void ShortestPath_Floyd2(GraphAdjList* G, int P[51][51], int D[51][51]);
+    void shortest_path_floyd_walking(GraphAdjList* G, int P[51][51], int D[51][51]);
+    void shortest_path_floyd_riding(GraphAdjList* G, int P[51][51], int D[51][51]);
 
     //输出路径长度和具体路径
     void ShowShortestResult(int originPos, int endPos);
@@ -61,8 +59,8 @@ public:
     int _distance[51][51] = { 0 };
     int _distance2[51][51] = { 0 };
    Ui::MainWindow *ui_all=nullptr;
-    //Ui::MainWindow *ui;
 };
 
 
 #endif // GRAPHSTRUCT_H
+

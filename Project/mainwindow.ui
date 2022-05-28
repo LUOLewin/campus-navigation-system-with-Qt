@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1282</width>
-    <height>852</height>
+    <width>1481</width>
+    <height>931</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -70,7 +70,7 @@
       <widget class="QTextBrowser" name="textBrowser"/>
      </item>
      <item>
-      <widget class="QPushButton" name="available_path_button">
+      <widget class="QPushButton" name="walking_button">
        <property name="text">
         <string>步行模式</string>
        </property>
@@ -80,9 +80,23 @@
       <widget class="QTextBrowser" name="textBrowser2"/>
      </item>
      <item>
-      <widget class="QPushButton" name="shortest_path_button">
+      <widget class="QPushButton" name="riding_button">
        <property name="text">
         <string>骑行模式</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="show_walking_button">
+       <property name="text">
+        <string>显示步行路径</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="show_riding_button">
+       <property name="text">
+        <string>显示骑行路径</string>
        </property>
       </widget>
      </item>
@@ -1406,13 +1420,23 @@ color: rgb(0, 0, 0);</string>
      <string>点击：</string>
     </property>
    </widget>
+   <widget class="QTextBrowser" name="textBrowser_2">
+    <property name="geometry">
+     <rect>
+      <x>1290</x>
+      <y>0</y>
+      <width>181</width>
+      <height>591</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1282</width>
+     <width>1481</width>
      <height>25</height>
     </rect>
    </property>

@@ -24,26 +24,18 @@ Date:           2022.3.17
 #include <QPixmap>
 #include <QList>
 #include <QLineF>
+//界面操作指针
+Ui::MainWindow *ui_p;//用于给地点控件子类提供访问
+MainWindow *ui_wind;//给图数据结构提供访问
+
+//地点控件和连接线线性表管理
 place * placelist[52];
-extern Ui::MainWindow *ui_p;
-MainWindow *ui_wind;
-place *A;
-place* B;
-extern int src;
-extern int dest;
 QList <QLineF> linelist;
-int click=0;
-//QByteArray conv(QByteArray a)
-//{
-//    QTextCodec *c=QTextCodec::codecForName("utf8");
-//    a=c->toUnicode(a);
-//    return a;
-//}
-void MainWindow::draw_line(place *src, place *dest)
-{
-    A = src;
-    B = dest;
-}
+
+//存储画线的地点id
+int src;
+int dest;
+
 void MainWindow::ui_init()
 {
     this->adjacencyList.ui_all = ui;
@@ -57,11 +49,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui_wind = this;
     ui->setupUi(this);
     this->setMouseTracking(true);
-    ui->map->lower();
-    ui_init();
+    this->ui->map->lower();
+    this->ui_init();
     ui_p = ui;
-    A = ui->Node_0;
-    B = ui->Node_1;
     placelist[0] = ui->Node_0;
     placelist[1] = ui->Node_1;
     placelist[2] = ui->Node_2;
@@ -113,66 +103,6 @@ MainWindow::MainWindow(QWidget *parent)
     placelist[48] = ui->Node_48;
     placelist[49] = ui->Node_49;
     placelist[50] = ui->Node_50;
-
-//    placelist->append(ui->Node_0);
-//    placelist->append(ui->Node_1);
-//    placelist->append(ui->Node_2);
-//    placelist->append(ui->Node_3);
-//    placelist->append(ui->Node_4);
-//    placelist->append(ui->Node_5);
-//    placelist->append(ui->Node_6);
-//    placelist->append(ui->Node_7);
-//    placelist->append(ui->Node_8);
-//    placelist->append(ui->Node_9);
-//    placelist->append(ui->Node_10);
-//    placelist->append(ui->Node_11);
-//    placelist->append(ui->Node_12);
-//    placelist->append(ui->Node_13);
-//    placelist->append(ui->Node_14);
-//    placelist->append(ui->Node_15);
-//    placelist->append(ui->Node_16);
-//    placelist->append(ui->Node_17);
-//    placelist->append(ui->Node_18);
-//    placelist->append(ui->Node_19);
-//    placelist->append(ui->Node_20);
-//    placelist->append(ui->Node_21);
-//    placelist->append(ui->Node_22);
-//    placelist->append(ui->Node_23);
-//    placelist->append(ui->Node_24);
-//    placelist->append(ui->Node_25);
-//    placelist->append(ui->Node_26);
-//    placelist->append(ui->Node_27);
-//    placelist->append(ui->Node_28);
-//    placelist->append(ui->Node_29);
-//    placelist->append(ui->Node_30);
-//    placelist->append(ui->Node_31);
-//    placelist->append(ui->Node_32);
-//    placelist->append(ui->Node_33);
-//    placelist->append(ui->Node_34);
-//    placelist->append(ui->Node_35);
-//    placelist->append(ui->Node_36);
-//    placelist->append(ui->Node_37);
-//    placelist->append(ui->Node_38);
-//    placelist->append(ui->Node_39);
-//    placelist->append(ui->Node_40);
-//    placelist->append(ui->Node_41);
-//    placelist->append(ui->Node_42);
-//    placelist->append(ui->Node_43);
-//    placelist->append(ui->Node_44);
-//    placelist->append(ui->Node_45);
-//    placelist->append(ui->Node_46);
-//    placelist->append(ui->Node_47);
-//    placelist->append(ui->Node_48);
-//    placelist->append(ui->Node_49);
-//    placelist->append(ui->Node_50);
-    //ui->Node_0->draw_line(ui->Node_0,ui->Node_49);
-    //QLine* line=new QLine(A->x(),A->y(),B->x(),B->y());
-//    QPainter painter(this);
-//    QPen pen(QColor(255,0,0));
-//    pen.setWidth(10);
-//    painter.setPen(pen);
-//    painter.translate(0,0);
-//    painter.drawLine(ui->Node_0->x(),ui->Node_0->y(),ui->Node_49->x(),ui->Node_49->y());
 }
 
 MainWindow::~MainWindow()
@@ -180,7 +110,24 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
+void MainWindow::on_show_walking_button_clicked()
+{
+    this->ui->textBrowser_2->clear();
+    GraphAdjList* GA = new GraphAdjList;
+    this->adjacencyList.init_walking_map(GA);
+    this->adjacencyList.CreateALGraph(GA);
+    this->adjacencyList.ShowALGraph(GA);
+    delete GA;
+}
+void MainWindow::on_show_riding_button_clicked()
+{
+    this->ui->textBrowser_2->clear();
+    GraphAdjList* GB = new GraphAdjList;
+    this->adjacencyList.init_riding_map(GB);
+    this->adjacencyList.CreateALGraph2(GB);
+    this->adjacencyList.ShowALGraph(GB);
+    delete GB;
+}
 /**
  * @brief 主界面关闭事件实现
  * @param event
@@ -205,20 +152,16 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     if (event->button() == Qt::LeftButton) {                // 发生鼠标左击事件
         int x = this->mapFromGlobal(QCursor().pos()).x();   // 获取鼠标返回的横坐标
         int y = this->mapFromGlobal(QCursor().pos()).y();   // 获取鼠标返回的纵坐标
-
-//        ui->lineEdit->clear();
-//        ui->lineEdit2->clear();
-        //click++;
-//        ui->label_2->setText("已经点击了第：("+QString::number(1)+"个点，正在点击第"+QString::number(1)+"个点！");
     }
 }
 
 
 /**
- * @brief 可选路径按钮实现，显示从起点到终点的所有可达路径
+ * @brief 步行按钮实现，显示从起点到终点的最短路径
  */
-void MainWindow::on_available_path_button_clicked()
+void MainWindow::on_walking_button_clicked()
 {
+    this->ui->textBrowser->clear();
     place::red=0;
     for(int i =0;i<=50;i++)
         placelist[i]->setStyleSheet("background-color: rgb(255, 255, 255);");
@@ -231,9 +174,9 @@ void MainWindow::on_available_path_button_clicked()
     int endPos=ui->lineEdit2->text().toInt();
     ui->textBrowser->append(c->toUnicode("当前为步行模式"));
     GraphAdjList* GA = new GraphAdjList;
-    this->adjacencyList.InitMap(GA);
+    this->adjacencyList.init_walking_map(GA);
     this->adjacencyList.CreateALGraph(GA);
-    this->adjacencyList.ShortestPath_Floyd(GA, this->adjacencyList.ShortestPathmatrix, this->adjacencyList.ShortestPathvalue);
+    this->adjacencyList.shortest_path_floyd_walking(GA, this->adjacencyList.ShortestPathmatrix, this->adjacencyList.ShortestPathvalue);
 
     this->adjacencyList.ShowShortestResult(originPos, endPos);
 
@@ -242,10 +185,11 @@ void MainWindow::on_available_path_button_clicked()
 
 
 /**
- * @brief 最短路径按钮实现，显示从起点到终点的最短路径
+ * @brief 骑行按钮实现，显示从起点到终点的最短路径
  */
-void MainWindow::on_shortest_path_button_clicked()
+void MainWindow::on_riding_button_clicked()
 {
+    this->ui->textBrowser2->clear();
     place::red=0;
     for(int i =0;i<=50;i++)
         placelist[i]->setStyleSheet("background-color: rgb(255, 255, 255);");
@@ -259,46 +203,29 @@ void MainWindow::on_shortest_path_button_clicked()
     int endPos=ui->lineEdit2->text().toInt();
     ui->textBrowser2->append(c->toUnicode("当前为骑行模式"));
     GraphAdjList* GB = new GraphAdjList;
-    this->adjacencyList2.InitMap1(GB);
+    this->adjacencyList2.init_riding_map(GB);
     this->adjacencyList2.CreateALGraph2(GB);
-    this->adjacencyList2.ShortestPath_Floyd2(GB, this->adjacencyList2.ShortestPathmatrix, this->adjacencyList2.ShortestPathvalue);
+    this->adjacencyList2.shortest_path_floyd_riding(GB, this->adjacencyList2.ShortestPathmatrix, this->adjacencyList2.ShortestPathvalue);
 
     this->adjacencyList2.ShowShortestResult2(originPos, endPos);
 
     delete GB;
 
 }
-
-
-
 void MainWindow::mouseMoveEvent(QMouseEvent *e)
 {
     ui->MousePosLabel->setText("位置：("+QString::number(e->x())+","+QString::number(e->y())+")");//显示内容(x,y)
 }
 void MainWindow::paintEvent(QPaintEvent *event)
 {
-    //ui->map->lower();
-
     QPainter *painter1=new QPainter(this);
     QPixmap pix = QPixmap(":/images/image/SchoolMap.png");
-    //QLine line = QLine(ui->Node_0->x(),ui->Node_0->y(),ui->Node_49->x(),ui->Node_49->y());
-    //QPainter painter(this);
-    //QPen pen(QColor(255,0,0));
-//    pen.setWidth(10);
-//    painter.setPen(pen);
-//    painter.translate(0,0);
     painter1->drawPixmap(0,0,1091,681,pix);
-    //painter.drawLine(line);
-    //QLine line1 = QLine(A->x(),A->y(),B->x(),B->y());
-    //ainter1->save();
     QPen pen1(QColor(255,0,0));
     pen1.setWidth(5);
     painter1->setPen(pen1);
     painter1->translate(0,0);
-    //painter1->drawLine(line1);
     painter1->drawLines(linelist);
-    //painter1->restore();
     delete painter1;
-    //ui->map->lower();
     update();
 }
